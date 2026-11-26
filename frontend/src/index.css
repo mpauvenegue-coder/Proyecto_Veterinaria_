@@ -1,2 +1,72 @@
-body { margin: 0; background: #f7f8fa; }
-.card { border-radius: 8px; }
+body {
+    margin: 0;
+    background: #f5f7f3;
+    color: #354f52;
+}
+
+.menu-principal {
+    background-color: #354f52;
+}
+
+.card {
+    border-radius: 12px;
+    border: 1px solid #dce5db;
+    background-color: #ffffff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+    color: #354f52;
+}
+
+.btn-primary,
+.btn-outline-primary {
+    background-color: #52796f;
+    border-color: #52796f;
+    color: #ffffff;
+}
+
+.btn-primary:hover,
+.btn-outline-primary:hover {
+    background-color: #354f52;
+    border-color: #354f52;
+    color: #ffffff;
+}
+
+.btn-outline-light {
+    border-color: #84a98c;
+    color: #ffffff;
+}
+
+.btn-outline-light:hover {
+    background-color: #84a98c;
+    border-color: #84a98c;
+    color: #354f52;
+}
+
+.btn-warning {
+    background-color: #eadcc8;
+    border-color: #eadcc8;
+    color: #354f52;
+}
+
+.btn-warning:hover {
+    background-color: #d8c7ad;
+    border-color: #d8c7ad;
+    color: #354f52;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #84a98c;
+    box-shadow: 0 0 0 0.2rem rgba(132, 169, 140, 0.25);
+}
+
+.table {
+    --bs-table-color: #354f52;
+}
+
+.table thead th {
+    background-color: #e6eee4;
+    color: #354f52;
+}
