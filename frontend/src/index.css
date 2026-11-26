@@ -1,72 +1,90 @@
 body {
     margin: 0;
-    background: #f5f7f3;
-    color: #354f52;
+    background: #121212;
+    color: #f5f5f5;
 }
 
 .menu-principal {
-    background-color: #354f52;
+    background-color: #1c1c1c;
 }
 
 .card {
     border-radius: 12px;
-    border: 1px solid #dce5db;
-    background-color: #ffffff;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #383838;
+    background-color: #222222;
+    color: #f5f5f5;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .card-title {
-    color: #354f52;
+    color: #98e5c5;
 }
 
 .btn-primary,
 .btn-outline-primary {
-    background-color: #52796f;
-    border-color: #52796f;
-    color: #ffffff;
+    background-color: #98e5c5;
+    border-color: #98e5c5;
+    color: #121212;
 }
 
 .btn-primary:hover,
 .btn-outline-primary:hover {
-    background-color: #354f52;
-    border-color: #354f52;
-    color: #ffffff;
+    background-color: #75c9a6;
+    border-color: #75c9a6;
+    color: #121212;
 }
 
 .btn-outline-light {
-    border-color: #84a98c;
-    color: #ffffff;
+    border-color: #98e5c5;
+    color: #98e5c5;
 }
 
 .btn-outline-light:hover {
-    background-color: #84a98c;
-    border-color: #84a98c;
-    color: #354f52;
+    background-color: #98e5c5;
+    border-color: #98e5c5;
+    color: #121212;
 }
 
 .btn-warning {
-    background-color: #eadcc8;
-    border-color: #eadcc8;
-    color: #354f52;
+    background-color: #98e5c5;
+    border-color: #98e5c5;
+    color: #121212;
 }
 
 .btn-warning:hover {
-    background-color: #d8c7ad;
-    border-color: #d8c7ad;
-    color: #354f52;
+    background-color: #75c9a6;
+    border-color: #75c9a6;
+    color: #121212;
+}
+
+.form-control,
+.form-select {
+    background-color: #292929;
+    border-color: #444444;
+    color: #f5f5f5;
 }
 
 .form-control:focus,
 .form-select:focus {
-    border-color: #84a98c;
-    box-shadow: 0 0 0 0.2rem rgba(132, 169, 140, 0.25);
+    background-color: #292929;
+    color: #f5f5f5;
+    border-color: #98e5c5;
+    box-shadow: 0 0 0 0.2rem rgba(152, 229, 197, 0.25);
+}
+
+.form-control::placeholder {
+    color: #aaaaaa;
 }
 
 .table {
-    --bs-table-color: #354f52;
+    --bs-table-bg: #222222;
+    --bs-table-color: #f5f5f5;
+    --bs-table-border-color: #383838;
+    --bs-table-striped-bg: #292929;
+    --bs-table-striped-color: #f5f5f5;
 }
 
 .table thead th {
-    background-color: #e6eee4;
-    color: #354f52;
+    background-color: #292929;
+    color: #98e5c5;
 }
