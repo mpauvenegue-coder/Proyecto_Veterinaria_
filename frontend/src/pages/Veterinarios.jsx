@@ -159,8 +159,8 @@ export default function Veterinarios({ token, usuario }) {
                     <td>{registro.activo ? "Sí" : "No"}</td>
                     <td><div className="d-flex gap-1 flex-wrap"><button className="btn btn-outline-secondary btn-sm" onClick={() => consultarRegistro(registro)}>Ver</button>
                         {puedeEditar && <button className="btn btn-outline-primary btn-sm" onClick={() => editarRegistro(registro)}>Editar</button>}
-                        
                         {puedeEliminar && <button className="btn btn-outline-danger btn-sm" onClick={() => eliminarRegistro(registro.id)}>Eliminar</button>}</div></td></tr>)}
+           
             </tbody></table></div>
         <div className="d-flex align-items-center gap-3 mt-3"><button className="btn btn-outline-primary" disabled={pagina <= 1 || cargando} onClick={() => setPagina(pagina - 1)}>Anterior</button><span>Página {pagina} de {totalPaginas}</span><button className="btn btn-outline-primary" disabled={pagina >= totalPaginas || cargando} onClick={() => setPagina(pagina + 1)}>Siguiente</button></div>
     </section>;
