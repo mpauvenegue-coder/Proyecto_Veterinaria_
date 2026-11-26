@@ -88,6 +88,7 @@ export default function DetallesCita({ token, usuario }) {
     return <section>
         <Link to="/citas">Volver a citas</Link>
         <h1 className="mt-3">Servicios de la cita #{id}</h1>
+        
         <Mensaje error={error} mensaje={mensaje} />
         {cargando && <p>Cargando...</p>}
         {cita && <div className="card card-body mb-3">
@@ -95,6 +96,7 @@ export default function DetallesCita({ token, usuario }) {
             <p><strong>Estado:</strong> {cita.estado}</p>
             <p><strong>Total:</strong> ₡{cita.total} | <strong>Saldo:</strong> ₡{cita.saldo}</p>
         </div>}
+        
         {citaAbierta && (editandoId === null ? puedeCrear : puedeEditar) && <form className="card card-body mb-3" onSubmit={guardarDetalle}>
             <h2 className="h5">{editandoId === null ? "Agregar servicio" : "Editar servicio"}</h2>
             <div className="row g-3">
@@ -113,6 +115,7 @@ export default function DetallesCita({ token, usuario }) {
                 {editandoId !== null && <button type="button" className="btn btn-secondary" onClick={cancelarEdicion}>Cancelar</button>}
             </div>
         </form>}
+        
         <div className="table-responsive"><table className="table table-striped table-bordered">
             <thead><tr><th>Servicio</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th><th>Acciones</th></tr></thead>
             <tbody>{detalles.length === 0 ? <tr><td colSpan="5">No hay servicios en esta cita.</td></tr> : detalles.map(detalle =>

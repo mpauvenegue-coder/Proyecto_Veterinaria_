@@ -128,6 +128,7 @@ export default function Pagos({ token, usuario }) {
             <h1>Pagos</h1>
             {puedeCrear && <button className="btn btn-primary" onClick={nuevoRegistro}>Nuevo registro</button>}
         </div>
+        
         <Mensaje error={error} mensaje={mensaje} />
         {detalle && <div className="card card-body mb-3"><h2 className="h5">Detalle del registro #{detalle.id}</h2>
             <p><strong>Cita:</strong> {String(detalle.cita ?? "")}</p>
@@ -137,6 +138,7 @@ export default function Pagos({ token, usuario }) {
             <p><strong>Referencia:</strong> {String(detalle.referencia ?? "")}</p>
             <p><strong>Activo:</strong> {String(detalle.activo ?? "")}</p>
             <button className="btn btn-secondary" onClick={() => setDetalle(null)}>Cerrar</button></div>}
+        
         {mostrandoFormulario && <form className="card card-body mb-4" onSubmit={guardarRegistro}>
             <h2 className="h5">{editandoId === null ? "Crear registro" : "Editar registro"}</h2><div className="row g-3">
                 <div className="col-md-6"><label className="form-label">Cita</label><select className="form-select" name="cita" value={formulario.cita} onChange={manejarCambio} required><option value="">Seleccione cita</option>{citas.map(registro => <option key={registro.id} value={registro.id}>{`Cita ${registro.id} - ${registro.nombre_mascota}`}</option>)}</select></div>
@@ -146,11 +148,13 @@ export default function Pagos({ token, usuario }) {
                 <div className="col-md-6"><label className="form-label">Referencia</label><input type="text" className="form-control" name="referencia" value={formulario.referencia} onChange={manejarCambio} /></div>
                 <div className="col-md-6"><label className="form-check-label"><input type="checkbox" className="form-check-input me-2" name="activo" checked={!!formulario.activo} onChange={manejarCambio} />Activo</label></div>
             </div><div className="d-flex gap-2 mt-3"><button className="btn btn-primary" disabled={procesando}>{procesando ? "Guardando..." : "Guardar"}</button><button type="button" className="btn btn-secondary" onClick={() => setMostrandoFormulario(false)}>Cancelar</button></div></form>}
+        
         <div className="card card-body mb-3"><div className="row g-3">
             <div className="col-md-3"><label className="form-label">Cita</label><select className="form-select" name="cita" value={filtros.cita || ""} onChange={manejarFiltro}><option value="">Todos</option>{citas.map(registro => <option key={registro.id} value={registro.id}>{`Cita ${registro.id} - ${registro.nombre_mascota}`}</option>)}</select></div>
             <div className="col-md-3"><label className="form-label">Método</label><select className="form-select" name="metodo" value={filtros.metodo || ""} onChange={manejarFiltro}><option value="">Todos</option><option value="EFECTIVO">Efectivo</option><option value="SINPE">SINPE</option><option value="TARJETA">Tarjeta</option></select></div>
             <div className="col-md-3"><label className="form-label">Estado</label><select className="form-select" name="activo" value={filtros.activo || ""} onChange={manejarFiltro}><option value="">Todos</option><option value="true">Activos</option><option value="false">Inactivos</option></select></div>
         </div></div>
+        
         <div className="table-responsive"><table className="table table-striped table-bordered"><thead><tr><th>ID</th>
             <th>Cita</th>
             <th>Fecha de pago</th>
@@ -159,6 +163,7 @@ export default function Pagos({ token, usuario }) {
             <th>Referencia</th>
             <th>Activo</th>
             <th>Acciones</th></tr></thead><tbody>
+                
                 {cargando ? <tr><td colSpan="8">Cargando...</td></tr> : registros.length === 0 ? <tr><td colSpan="8">No hay registros.</td></tr> : registros.map(registro => <tr key={registro.id}><td>{registro.id}</td>
                     <td>{citas.find(item => item.id === registro.cita)?.nombre_mascota || registro.cita}</td>
                     <td>{registro.fecha_pago}</td>
@@ -169,6 +174,7 @@ export default function Pagos({ token, usuario }) {
                     <td><div className="d-flex gap-1 flex-wrap"><button className="btn btn-outline-secondary btn-sm" onClick={() => consultarRegistro(registro)}>Ver</button>
                         {puedeEditar && <button className="btn btn-outline-primary btn-sm" onClick={() => editarRegistro(registro)}>Editar</button>}
                         {puedeEliminar && <button className="btn btn-outline-danger btn-sm" onClick={() => eliminarRegistro(registro.id)}>Eliminar</button>}</div></td></tr>)}
+            
             </tbody></table></div>
         <div className="d-flex align-items-center gap-3 mt-3"><button className="btn btn-outline-primary" disabled={pagina <= 1 || cargando} onClick={() => setPagina(pagina - 1)}>Anterior</button><span>Página {pagina} de {totalPaginas}</span><button className="btn btn-outline-primary" disabled={pagina >= totalPaginas || cargando} onClick={() => setPagina(pagina + 1)}>Siguiente</button></div>
     </section>;

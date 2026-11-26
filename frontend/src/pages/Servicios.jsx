@@ -130,6 +130,7 @@ export default function Servicios({ token, usuario }) {
       <h1>Servicios</h1>
       {puedeCrear && <button className="btn btn-primary" onClick={nuevoRegistro}>Nuevo registro</button>}
     </div>
+    
     <Mensaje error={error} mensaje={mensaje} />
     {detalle && <div className="card card-body mb-3"><h2 className="h5">Detalle del registro #{detalle.id}</h2>
       <p><strong>Código:</strong> {String(detalle.codigo ?? "")}</p>
@@ -141,17 +142,19 @@ export default function Servicios({ token, usuario }) {
       <p><strong>Cupos:</strong> {String(detalle.cupos ?? "")}</p>
       <p><strong>Activo:</strong> {String(detalle.activo ?? "")}</p>
       <button className="btn btn-secondary" onClick={() => setDetalle(null)}>Cerrar</button></div>}
+    
     {mostrandoFormulario && <form className="card card-body mb-4" onSubmit={guardarRegistro}>
       <h2 className="h5">{editandoId === null ? "Crear registro" : "Editar registro"}</h2><div className="row g-3">
-      <div className="col-md-6"><label className="form-label">Código</label><input type="text" className="form-control" name="codigo" value={formulario.codigo} onChange={manejarCambio} required /></div>
-      <div className="col-md-6"><label className="form-label">Nombre</label><input type="text" className="form-control" name="nombre" value={formulario.nombre} onChange={manejarCambio} required /></div>
-      <div className="col-md-6"><label className="form-label">Descripción</label><input type="text" className="form-control" name="descripcion" value={formulario.descripcion} onChange={manejarCambio} /></div>
-      <div className="col-md-6"><label className="form-label">Tipo</label><input type="text" className="form-control" name="tipo" value={formulario.tipo} onChange={manejarCambio} required /></div>
-      <div className="col-md-6"><label className="form-label">Veterinario</label><select className="form-select" name="veterinario" value={formulario.veterinario} onChange={manejarCambio} required><option value="">Seleccione veterinario</option>{veterinarios.map(registro => <option key={registro.id} value={registro.id}>{registro.nombre || `Registro ${registro.id}`}</option>)}</select></div>
-      <div className="col-md-6"><label className="form-label">Precio</label><input type="number" className="form-control" name="precio" value={formulario.precio} onChange={manejarCambio} required min="0.01" step="0.01" /></div>
-      <div className="col-md-6"><label className="form-label">Cupos</label><input type="number" className="form-control" name="cupos" value={formulario.cupos} onChange={manejarCambio} required min="0" step="1" /></div>
-      <div className="col-md-6"><label className="form-check-label"><input type="checkbox" className="form-check-input me-2" name="activo" checked={!!formulario.activo} onChange={manejarCambio} />Activo</label></div>
+        <div className="col-md-6"><label className="form-label">Código</label><input type="text" className="form-control" name="codigo" value={formulario.codigo} onChange={manejarCambio} required /></div>
+        <div className="col-md-6"><label className="form-label">Nombre</label><input type="text" className="form-control" name="nombre" value={formulario.nombre} onChange={manejarCambio} required /></div>
+        <div className="col-md-6"><label className="form-label">Descripción</label><input type="text" className="form-control" name="descripcion" value={formulario.descripcion} onChange={manejarCambio} /></div>
+        <div className="col-md-6"><label className="form-label">Tipo</label><input type="text" className="form-control" name="tipo" value={formulario.tipo} onChange={manejarCambio} required /></div>
+        <div className="col-md-6"><label className="form-label">Veterinario</label><select className="form-select" name="veterinario" value={formulario.veterinario} onChange={manejarCambio} required><option value="">Seleccione veterinario</option>{veterinarios.map(registro => <option key={registro.id} value={registro.id}>{registro.nombre || `Registro ${registro.id}`}</option>)}</select></div>
+        <div className="col-md-6"><label className="form-label">Precio</label><input type="number" className="form-control" name="precio" value={formulario.precio} onChange={manejarCambio} required min="0.01" step="0.01" /></div>
+        <div className="col-md-6"><label className="form-label">Cupos</label><input type="number" className="form-control" name="cupos" value={formulario.cupos} onChange={manejarCambio} required min="0" step="1" /></div>
+        <div className="col-md-6"><label className="form-check-label"><input type="checkbox" className="form-check-input me-2" name="activo" checked={!!formulario.activo} onChange={manejarCambio} />Activo</label></div>
       </div><div className="d-flex gap-2 mt-3"><button className="btn btn-primary" disabled={procesando}>{procesando ? "Guardando..." : "Guardar"}</button><button type="button" className="btn btn-secondary" onClick={() => setMostrandoFormulario(false)}>Cancelar</button></div></form>}
+    
     <div className="card card-body mb-3"><div className="row g-3">
       <div className="col-md-3"><label className="form-label">Estado</label><select className="form-select" name="activo" value={filtros.activo || ""} onChange={manejarFiltro}><option value="">Todos</option><option value="true">Activos</option><option value="false">Inactivos</option></select></div>
       <div className="col-md-3"><label className="form-label">Veterinario</label><select className="form-select" name="veterinario" value={filtros.veterinario || ""} onChange={manejarFiltro}><option value="">Todos</option>{veterinarios.map(registro => <option key={registro.id} value={registro.id}>{registro.nombre || `Registro ${registro.id}`}</option>)}</select></div>
@@ -159,6 +162,7 @@ export default function Servicios({ token, usuario }) {
       <div className="col-md-3"><label className="form-label">Buscar</label><input className="form-control" name="buscar" value={filtros.buscar || ""} onChange={manejarFiltro} /></div>
       <div className="col-md-3"><label className="form-label">Ordenar</label><select className="form-select" name="ordering" value={filtros.ordering || ""} onChange={manejarFiltro}><option value="">Predeterminado</option><option value="nombre">Nombre A-Z</option><option value="-nombre">Nombre Z-A</option><option value="precio">Precio menor</option><option value="-precio">Precio mayor</option></select></div>
     </div></div>
+    
     <div className="table-responsive"><table className="table table-striped table-bordered"><thead><tr><th>ID</th>
       <th>Código</th>
       <th>Nombre</th>
@@ -169,19 +173,21 @@ export default function Servicios({ token, usuario }) {
       <th>Cupos</th>
       <th>Activo</th>
       <th>Acciones</th></tr></thead><tbody>
-      {cargando ? <tr><td colSpan="10">Cargando...</td></tr> : registros.length === 0 ? <tr><td colSpan="10">No hay registros.</td></tr> : registros.map(registro => <tr key={registro.id}><td>{registro.id}</td>
-      <td>{registro.codigo}</td>
-      <td>{registro.nombre}</td>
-      <td>{registro.descripcion}</td>
-      <td>{registro.tipo}</td>
-      <td>{veterinarios.find(item => String(item.id) === String(registro.veterinario))?.nombre || registro.veterinario}</td>
-      <td>{registro.precio}</td>
-      <td>{registro.cupos}</td>
-      <td>{registro.activo ? "Sí" : "No"}</td>
-      <td><div className="d-flex gap-1 flex-wrap"><button className="btn btn-outline-secondary btn-sm" onClick={() => consultarRegistro(registro)}>Ver</button>
-      {puedeEditar && <button className="btn btn-outline-primary btn-sm" onClick={() => editarRegistro(registro)}>Editar</button>}
-      {puedeEliminar && <button className="btn btn-outline-danger btn-sm" onClick={() => eliminarRegistro(registro.id)}>Eliminar</button>}</div></td></tr>)}
-    </tbody></table></div>
+        
+        {cargando ? <tr><td colSpan="10">Cargando...</td></tr> : registros.length === 0 ? <tr><td colSpan="10">No hay registros.</td></tr> : registros.map(registro => <tr key={registro.id}><td>{registro.id}</td>
+          <td>{registro.codigo}</td>
+          <td>{registro.nombre}</td>
+          <td>{registro.descripcion}</td>
+          <td>{registro.tipo}</td>
+          <td>{veterinarios.find(item => String(item.id) === String(registro.veterinario))?.nombre || registro.veterinario}</td>
+          <td>{registro.precio}</td>
+          <td>{registro.cupos}</td>
+          <td>{registro.activo ? "Sí" : "No"}</td>
+          <td><div className="d-flex gap-1 flex-wrap"><button className="btn btn-outline-secondary btn-sm" onClick={() => consultarRegistro(registro)}>Ver</button>
+            {puedeEditar && <button className="btn btn-outline-primary btn-sm" onClick={() => editarRegistro(registro)}>Editar</button>}
+            {puedeEliminar && <button className="btn btn-outline-danger btn-sm" onClick={() => eliminarRegistro(registro.id)}>Eliminar</button>}</div></td></tr>)}
+      
+      </tbody></table></div>
     <div className="d-flex align-items-center gap-3 mt-3"><button className="btn btn-outline-primary" disabled={pagina <= 1 || cargando} onClick={() => setPagina(pagina - 1)}>Anterior</button><span>Página {pagina} de {totalPaginas}</span><button className="btn btn-outline-primary" disabled={pagina >= totalPaginas || cargando} onClick={() => setPagina(pagina + 1)}>Siguiente</button></div>
   </section>;
 }
